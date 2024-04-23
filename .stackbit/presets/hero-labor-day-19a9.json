@@ -1,0 +1,31 @@
+{
+    "model": "hero",
+    "srcType": "contentful",
+    "srcProjectId": "8mudm6c372v2",
+    "presets": [
+        {
+            "label": "Labor Day",
+            "locale": null,
+            "metadata": {
+                "categories": [
+                    "new template"
+                ],
+                "canDelete": true
+            },
+            "data": {
+                "heading": "Can you make the perfect sandwich!!!!!!",
+                "body": "HandSandwich™️ is Central Southwestern Ohio's most highly attended sandwich-making class. Don't delay your ability to craft the perfect sandwich. Best!\n\n",
+                "image": {
+                    "$$ref": "6kkThfoHaWELkWWBEcJzUh",
+                    "$$type": "__image_model"
+                },
+                "button": {
+                    "$$ref": "36U7omnF7aFEHjVKwEhJI7",
+                    "$$type": "button"
+                },
+                "theme": "imgLeft"
+            },
+            "thumbnail": "images/hero-labor-day-19a9.png"
+        }
+    ]
+}
