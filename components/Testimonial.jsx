@@ -10,7 +10,7 @@ export const Testimonial = (props) => {
           <div className="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 text-3xl text-blue-900">&#8220;</div>
           <div className="absolute bottom-0 right-0 transform translate-x-4 translate-y-4 text-3xl text-blue-900">&#8221;</div>
         </div>
-        {props.quote}
+        &#8220;{props.quote}&#8221;
       </div>
     </div>
   );
