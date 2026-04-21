@@ -38,11 +38,14 @@ function mapEntry(entry) {
   const type = entry.sys?.contentType?.sys?.id || entry.sys?.type;
 
   if (entry.sys?.type === 'Asset') {
+    const image = entry.fields.file?.details?.image;
     return {
       id,
       type,
       src: `https:${entry.fields.file.url}`,
       alt: entry.fields.title,
+      width: image?.width,
+      height: image?.height,
     };
   }
 

@@ -1,5 +1,4 @@
 import Markdown from 'markdown-to-jsx';
-import Image from 'next/image';
 import { Button } from './Button.jsx';
 
 const themeClassMap = {
@@ -22,13 +21,14 @@ export const Hero = (props) => {
           )}
           {props.button && <Button {...props.button} />}
         </div>
-        <div className="relative hidden w-full overflow-hidden rounded-md lg:block">
+        <div className="hidden w-full overflow-hidden rounded-md lg:block">
           {props.image && (
-            <Image
+            <img
               src={props.image.src}
               alt={props.image.alt}
-              fill
-              style={{ objectFit: 'contain' }}
+              width={props.image.width}
+              height={props.image.height}
+              className="w-full h-auto object-contain"
               data-sb-field-path="image"
             />
           )}
