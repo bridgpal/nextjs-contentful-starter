@@ -14,19 +14,24 @@ async function getEntries(content_type, queryParams) {
   return entries;
 }
 
-export async function getPagePaths() {
+export async function getPagePaths(locales = []) {
   const { items } = await getEntries(PAGE_CONTENT_TYPE_ID);
-  return items.map((page) => {
+  const slugs = items.map((page) => {
     const slug = page.fields.slug;
     return slug.startsWith('/') ? slug : `/${slug}`;
   });
+  if (!locales.length) return slugs;
+  return locales.flatMap((locale) =>
+    slugs.map((slug) => ({ params: { slug: slug.split('/').filter(Boolean) }, locale }))
+  );
 }
 
-export async function getPageFromSlug(slug) {
-  const { items } = await getEntries(PAGE_CONTENT_TYPE_ID, { 'fields.slug': slug });
+export async function getPageFromSlug(slug, locale) {
+  const localeParams = locale ? { locale } : {};
+  const { items } = await getEntries(PAGE_CONTENT_TYPE_ID, { 'fields.slug': slug, ...localeParams });
   let page = (items ?? [])[0];
   if (!page && slug !== '/' && slug.startsWith('/')) {
-    const { items } = await getEntries(PAGE_CONTENT_TYPE_ID, { 'fields.slug': slug.slice(1) });
+    const { items } = await getEntries(PAGE_CONTENT_TYPE_ID, { 'fields.slug': slug.slice(1), ...localeParams });
     page = (items ?? [])[0];
   }
   if (!page) throw new Error(`Page not found for slug: ${slug}`);
