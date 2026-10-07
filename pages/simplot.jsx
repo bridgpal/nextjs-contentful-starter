@@ -44,9 +44,9 @@ const FALLBACK = {
 export async function getStaticProps({ locale }) {
   try {
     const page = await getPageFromSlug('/simplot', locale);
-    return { props: { page, source: 'contentful' }, revalidate: 60 };
+    return { props: { page, source: 'contentful' } };
   } catch {
-    return { props: { page: FALLBACK, source: 'fallback' }, revalidate: 60 };
+    return { props: { page: FALLBACK, source: 'fallback' } };
   }
 }
 
