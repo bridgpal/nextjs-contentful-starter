@@ -1,4 +1,4 @@
-# Stackbit Next.js + Contentful Minimal Starter
+# Stackbit Next.js + Contentful Minimal Starter Pack
 
 ![Screenshot](https://assets.stackbit.com/docs/tutorial-shared-thumb.png)
 
