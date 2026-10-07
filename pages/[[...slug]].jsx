@@ -5,7 +5,10 @@ import { Testimonial } from '../components/Testimonial.jsx';
 import { getPageFromSlug, getPagePaths } from '../utils/content.js';
 
 export async function getStaticPaths({ locales }) {
-  const paths = await getPagePaths(locales);
+  // /simplot has its own page file; skip it here to avoid a route clash
+  const paths = (await getPagePaths(locales)).filter(
+    (p) => (typeof p === 'string' ? p : '/' + p.params.slug.join('/')) !== '/simplot'
+  );
   return { paths, fallback: false };
 }
 
